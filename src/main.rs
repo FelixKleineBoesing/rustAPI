@@ -1,13 +1,13 @@
 mod data;
 
 use std::{env, io};
-use color_eyre::{Result};
-use polars::prelude::*;
+use env_logger::init;
+
 
 #[actix_rt::main]
 async fn main() -> io::Result<()>{
     env::set_var("RUST_LOG", "actix_web=debug");
-    env_logger::init();
+    init();
 
     let data = data::read_articles("..data/articles.csv")?;
 
